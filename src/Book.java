@@ -35,7 +35,7 @@ public abstract class Book {
     }
 
     public abstract String getBookType();
-    public boolean isOutDated(int yearLimit) {
+    public boolean isOutdated(int yearLimit) {
         int currentYear = LocalDate.now().getYear();
         return (currentYear - yearPublished) > yearLimit;
     }
