@@ -47,7 +47,12 @@ public class QuantumBookstore {
         double totalAmount = sellableBook.getPrice() * quantity;
 
         if (book instanceof PaperBook paperBook) {
-            paperBook.removeFromStock(quantity);
+            if (paperBook.removeFromStock(quantity)){
+                System.out.println("Quantum book store: Purchased " + quantity + " copy(ies) of '"
+                        + book.getTitle() + "' for $" + totalAmount);
+            } else {
+                throw new IllegalArgumentException("Not enough stock to complete the purchase");
+            };
         }
 
         if (book instanceof Shippable) {

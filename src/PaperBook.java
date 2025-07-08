@@ -13,12 +13,14 @@ public class PaperBook extends Book implements Shippable, Sellable {
     public int getQuantity() {
         return quantity;
     }
-    public void removeFromStock(int amount) {
+    public boolean removeFromStock(int amount) {
         if (amount <= quantity) {
             quantity -= amount;
             System.out.println(quantity+ " Remaining items in stock" );
+            return true;
         } else {
             System.out.println("Not enough stock to remove " + amount + " items.");
+            return false;
         }
     }
     public void addToStock(int amount) {
