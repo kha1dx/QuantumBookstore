@@ -1,4 +1,4 @@
-public class PaperBook extends Book {
+public class PaperBook extends Book implements Shippable, Sellable {
     protected int quantity;
     public PaperBook(String isbn, String title, String author, int yearPublished, double price, int quantity) {
         super(isbn, title, author, yearPublished, price);
@@ -30,4 +30,14 @@ public class PaperBook extends Book {
         }
     }
 
+    @Override
+    public boolean canBeSold() {
+        return quantity > 0;
+    }
+
+    @Override
+    public void ship(String address, int quantity) {
+        System.out.println("Quantum book store: Shipping " + quantity + " copy(ies) of '"
+                + this.getTitle() + "' to address: " + address);
+    }
 }
